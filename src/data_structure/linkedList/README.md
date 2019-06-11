@@ -2,12 +2,12 @@
 
 # Performance
 1. unshift
-  - Linked_List_Unshift: 2.610411986708641
-  - Array_Unshift: 344.5788069963455
+  - Linked_List: 2.610
+  - Array: 344.579
 
 2. push
-  - Linked_List_Push: 2.271670013666153
-  - Array_Push: 14.588238000869751
+  - Linked_List: 2.272
+  - Array: 14.588
 
 # When is LinkedList used ?
   - It can be implemented functions like a music player
