@@ -13,6 +13,6 @@
   - It can be implemented functions like a music player
   - Because LinkedList have next data and previous data, so I can skip or fall back music to listen next music. In addition, I can add music to head of LinkedList.
 
-# Reference
+# References
  - https://github.com/trekhleb/javascript-algorithms/blob/master/src/data-structures/linked-list/LinkedList.js
  - https://medium.com/journey-of-one-thousand-apps/data-structures-in-the-real-world-508f5968545a
