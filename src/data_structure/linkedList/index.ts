@@ -1,6 +1,7 @@
 'use strict';
 
-const { performance } = require('perf_hooks');
+import { performance } from 'perf_hooks';
+import { times } from "../../utils/array";
 
 class LinkedListNode<T> {
   public value: T;
@@ -58,10 +59,6 @@ export default class LinkedList<T> {
 
     return linkedListArray.toString();
   }
-}
-
-function times(times: number, callback: (value: any, index: number, array: any[]) => void) {
-  [...Array(times)].forEach(callback);
 }
 
 function compareArray(totalData: number) {
