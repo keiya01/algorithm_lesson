@@ -48,4 +48,37 @@ export class DoublyLinkedList<T> {
       this.tail = node;
     }
   }
+
+  findFromHead() {
+    let current = this.head;
+    if(!current) {
+      return;
+    }
+
+    const result = [];
+    while(current.next) {
+      result.push(current.value);
+      current = current.next;
+    }
+    result.push(current.value);
+
+    return result;
+  }
+
+  findFromTail() {
+    let current = this.tail;
+    if(!current) {
+      return;
+    }
+
+    const result = [];
+    while(current.prev) {
+      result.push(current.value);
+      current = current.prev;
+    }
+    result.push(current.value);
+
+    return result;
+  }
+
 }
