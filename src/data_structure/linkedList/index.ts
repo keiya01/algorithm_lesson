@@ -3,7 +3,7 @@
 import { performance } from 'perf_hooks';
 import { times } from "../../utils/array";
 
-class LinkedListNode<T> {
+export class LinkedListNode<T> {
   public value: T;
   public next: LinkedListNode<T> | null;
   public prev: LinkedListNode<T> | null;
@@ -14,7 +14,7 @@ class LinkedListNode<T> {
   }
 }
 
-export default class LinkedList<T> {
+export class LinkedList<T> {
   public head: LinkedListNode<T> | null;
   public tail: LinkedListNode<T> | null;
 
