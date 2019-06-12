@@ -59,3 +59,59 @@ describe("If prepend function can prepend to DoublyLinkedList.tail or not", () =
     });
   });
 });
+
+describe("If delete function can delete data from DoublyLinkedList.head or not, when prepended data", () => {
+  const tests = [
+    {
+      description: "Delete value from head",
+      data: [1, 2, 3, 4, 5],
+      result: [4, 3, 2, 1],
+      isError: false
+    }
+  ];
+
+  tests.forEach(({ description, data, result, isError }) => {
+    const link = new DoublyLinkedList<typeof data[0]>();
+    test(description, () => {
+      if (isError) {
+        return;
+      }
+
+      data.forEach(val => {
+        link.prepend(val);
+      });
+
+      link.deleteHead();
+
+      expect(link.findFromHead()).toEqual(result);
+    });
+  });
+});
+
+describe("If delete function can delete data from DoublyLinkedList.tail or not, when prepended data", () => {
+  const tests = [
+    {
+      description: "Delete value from tail",
+      data: [1, 2, 3, 4, 5],
+      result: [2, 3, 4, 5],
+      isError: false
+    }
+  ];
+
+  tests.forEach(({ description, data, result, isError }) => {
+    const link = new DoublyLinkedList<typeof data[0]>();
+    test(description, () => {
+      if (isError) {
+        return;
+      }
+
+      data.forEach(val => {
+        link.prepend(val);
+      });
+
+      link.deleteTail();
+
+      expect(link.findFromTail()).toEqual(result);
+    });
+  });
+});

@@ -49,6 +49,24 @@ export class DoublyLinkedList<T> {
     }
   }
 
+  deleteHead() {
+    if(!this.head) {
+      return;
+    }
+
+    const deletedHead = this.head;
+    this.head = deletedHead.next;
+  }
+
+  deleteTail() {
+    if(!this.tail) {
+      return;
+    }
+
+    const deletedTail = this.tail;
+    this.tail = deletedTail.prev;
+  }
+
   findFromHead() {
     let current = this.head;
     if(!current) {
