@@ -108,19 +108,6 @@ export default class LinkedList<T> {
   }
 }
 
-const link = new LinkedList<number>();
-link.unshift(1);
-link.unshift(2);
-link.unshift(3);
-link.unshift(4);
-link.unshift(5);
-link.push(6);
-link.push(7);
-link.push(8);
-link.push(9);
-console.log(link.toString());
-console.log(link.toString());
-
 function compareArray(totalData: number) {
   const linkedListUnshiftStart = performance.now();
   const linkedListUnshift = new LinkedList<number>();
