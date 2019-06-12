@@ -108,7 +108,7 @@ export default class LinkedList<T> {
   }
 }
 
-function compareArray(totalData: number) {
+function measurePerformance(totalData: number) {
   const linkedListUnshiftStart = performance.now();
   const linkedListUnshift = new LinkedList<number>();
   times(totalData, (_, index) => {
@@ -145,4 +145,4 @@ function compareArray(totalData: number) {
   console.log("Array_Push: ", arrayPushEnd - arrayPushStart);
 }
 
-compareArray(10000);
+measurePerformance(10000);
