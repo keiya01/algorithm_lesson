@@ -1,3 +1,6 @@
+import { times } from "../../utils/array";
+import { performance } from "perf_hooks";
+
 export class LinkedListNode<T> {
   public value: T;
   public next: LinkedListNode<T> | null;
@@ -37,20 +40,20 @@ export class DoublyLinkedList<T> {
   prepend(value: T) {
     const node = new LinkedListNode(value);
 
-    if(this.head) {
+    if (this.head) {
       this.head.prev = node;
     }
 
     node.next = this.head;
     this.head = node;
 
-    if(!this.tail) {
+    if (!this.tail) {
       this.tail = node;
     }
   }
 
   deleteHead() {
-    if(!this.head) {
+    if (!this.head) {
       return;
     }
 
@@ -59,7 +62,7 @@ export class DoublyLinkedList<T> {
   }
 
   deleteTail() {
-    if(!this.tail) {
+    if (!this.tail) {
       return;
     }
 
@@ -69,12 +72,12 @@ export class DoublyLinkedList<T> {
 
   findFromHead() {
     let current = this.head;
-    if(!current) {
+    if (!current) {
       return;
     }
 
     const result = [];
-    while(current.next) {
+    while (current.next) {
       result.push(current.value);
       current = current.next;
     }
@@ -85,12 +88,12 @@ export class DoublyLinkedList<T> {
 
   findFromTail() {
     let current = this.tail;
-    if(!current) {
+    if (!current) {
       return;
     }
 
     const result = [];
-    while(current.prev) {
+    while (current.prev) {
       result.push(current.value);
       current = current.prev;
     }
@@ -98,5 +101,43 @@ export class DoublyLinkedList<T> {
 
     return result;
   }
-
 }
+
+function measurePerformance(totalData: number) {
+  const linkedListUnshiftStart = performance.now();
+  const linkedListUnshift = new DoublyLinkedList<number>();
+  times(totalData, (_, index) => {
+    linkedListUnshift.prepend(index);
+  });
+  const linkedListUnshiftEnd = performance.now();
+  console.log("Linked_List_Unshift: ", linkedListUnshiftEnd - linkedListUnshiftStart);
+
+  const arrayUnshiftStart = performance.now();
+  let arrayUnshift: number[] = [];
+  times(totalData, (_, index) => {
+    arrayUnshift = [
+      index,
+      ...arrayUnshift
+    ];
+  });;
+  const arrayUnshiftEnd = performance.now();
+  console.log("Array_Unshift: ", arrayUnshiftEnd - arrayUnshiftStart);
+
+  const linkedListPushStart = performance.now();
+  const linkedListPush = new DoublyLinkedList<number>();
+  times(totalData, (_, index) => {
+    linkedListPush.push(index);
+  });
+  const linkedListPushEnd = performance.now();
+  console.log("Linked_List_Push: ", linkedListPushEnd - linkedListPushStart);
+
+  const arrayPushStart = performance.now();
+  const arrayPush = [];
+  times(totalData, (_, index) => {
+    arrayPush.unshift(index);
+  });
+  const arrayPushEnd = performance.now();
+  console.log("Array_Push: ", arrayPushEnd - arrayPushStart);
+}
+
+measurePerformance(10000);
