@@ -45,7 +45,7 @@ export default class LinkedList<T> {
     this.tail = node;
   }
 
-  unshift(value: T) {
+  prepend(value: T) {
     const node = new LinkedListNode<T>(value);
     node.next = this.head;
     this.head = node;
@@ -112,7 +112,7 @@ function measurePerformance(totalData: number) {
   const linkedListUnshiftStart = performance.now();
   const linkedListUnshift = new LinkedList<number>();
   times(totalData, (_, index) => {
-    linkedListUnshift.unshift(index);
+    linkedListUnshift.prepend(index);
   });
   const linkedListUnshiftEnd = performance.now();
   console.log("Linked_List_Unshift: ", linkedListUnshiftEnd - linkedListUnshiftStart);
