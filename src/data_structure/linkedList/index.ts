@@ -56,6 +56,41 @@ export default class LinkedList<T> {
     }
   }
 
+  deleteHead() {
+    if(!this.head) {
+      return;
+    }
+
+    const deletedHead = this.head;
+    this.head = deletedHead.next;
+  }
+
+  deleteTail() {
+    if(!this.tail || !this.head) {
+      return;
+    }
+
+    if(this.tail === this.head) {
+      this.head = null;
+      this.tail = null;
+      return;
+    }
+
+    let prev = null;
+    let current = this.head;
+    while(current.next) {
+      prev = current;
+      current = current.next;
+    }
+
+    if(!prev) {
+      return;
+    }
+
+    prev.next = null;
+    this.tail = prev;
+  }
+
   toString() {
     if (!this.head || !this.tail) {
       throw new Error("`Linked List` is empty! Please push data!");
@@ -83,6 +118,7 @@ link.push(6);
 link.push(7);
 link.push(8);
 link.push(9);
+console.log(link.toString());
 console.log(link.toString());
 
 function compareArray(totalData: number) {
