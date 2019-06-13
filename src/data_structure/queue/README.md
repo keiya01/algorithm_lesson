@@ -9,7 +9,7 @@
 - unshift:
 - access head data(array[0]):
 
-# When is used ?
+# When is it used ?
 - When a resource is shared among multiple consumers. Examples include CPU scheduling, Disk Scheduling.
 - When data is transferred asynchronously (data not necessarily received at same rate as sent) between two processes. Examples include IO Buffers, pipes, file IO, etc.
 
