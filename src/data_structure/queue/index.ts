@@ -1,3 +1,5 @@
+'use strict';
+
 import { LinkedList } from "../linkedList";
 
 export class Queue<T> extends LinkedList<T> {
@@ -16,7 +18,7 @@ export class Queue<T> extends LinkedList<T> {
   }
 
   peek() {
-    if(!this.head) {
+    if (!this.head) {
       return null;
     }
     return this.head.value;
