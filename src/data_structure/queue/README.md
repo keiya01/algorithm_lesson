@@ -1,13 +1,15 @@
 # Queue
 # Performance
+unshift_array:  14.232625007629395
+access_array:  0.005119994282722473
 1. Queue
-- unshift(enqueue):
-- access head data(heap):
-- access head data(dequeue):
+- unshift(enqueue): 3.232
+- access to head data(peak): 0.057
+- access to head data(dequeue): 0.136 
 
 2. Array
-- unshift:
-- access head data(array[0]):
+- unshift: 14.233
+- access to head data(array[0]): 0.005
 
 # When is it used ?
 - When a resource is shared among multiple consumers. Examples include CPU scheduling, Disk Scheduling.

@@ -32,6 +32,11 @@ const queuePerformance = (total: number) => {
   queue.peek();
   const peek_end = performance.now();
   console.log("peek: ", peek_end - peek_start);
+  
+  const dequeue_start = performance.now();
+  queue.dequeue();
+  const dequeue_end = performance.now();
+  console.log("dequeue: ", dequeue_end - dequeue_start);
 }
 
 arrayPerformance(10000);
