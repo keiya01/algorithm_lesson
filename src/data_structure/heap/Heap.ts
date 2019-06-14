@@ -17,6 +17,10 @@ export class Heap<T> {
     return Math.floor((index - 1) / 2);
   }
 
+  hasParent(index: number) {
+    return this.getParentIndex(index) >= 0;
+  }
+
   parent(index: number): T {
     const parentIndex = this.getParentIndex(index);
     return this.heapContainer[parentIndex];
@@ -26,18 +30,14 @@ export class Heap<T> {
    * Swap parent element to child element
    * or child element to parent element
    */
-  swap(parentIndex: number, childIndex: number) {
+  _swap(parentIndex: number, childIndex: number) {
     const parentElement = this.heapContainer[parentIndex];
     const childElement = this.heapContainer[childIndex];
     this.heapContainer[childIndex] = parentElement;
     this.heapContainer[parentIndex] = childElement;
   }
 
-  hasParent(index: number) {
-    return this.getParentIndex(index) >= 0;
-  }
-
-  heapifyUp(customStartIndex?: number) {
+  _heapifyUp(customStartIndex?: number) {
     let currentIndex = customStartIndex || this.heapContainer.length - 1;
 
     while(
@@ -45,9 +45,15 @@ export class Heap<T> {
       && this.pairIsInCorrectOrder(this.parent(currentIndex), this.heapContainer[currentIndex])
     ) {
       const parentIndex = this.getParentIndex(currentIndex);
-      this.swap(parentIndex, currentIndex);
+      this._swap(parentIndex, currentIndex);
       currentIndex = parentIndex;
     }
+  }
+
+  add(item: T) {
+    this.heapContainer.push(item);
+    this._heapifyUp();
+    return this;
   }
 
   /** 
