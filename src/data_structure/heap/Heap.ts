@@ -1,12 +1,21 @@
+type CompareFunction<T> = (parentElement: T, childElement: T) => void;
+
 export class Heap<T> {
   public heapContainer: T[];
+  public compareFunction: CompareFunction<T>;
 
-  constructor() {
+  constructor(compareFcuntion: CompareFunction<T>) {
     if(new.target === Heap) {
       throw new Error("Can not call Heap directory");
     }
 
     this.heapContainer = [];
+
+    /**
+     * this.compareFunction can customize 
+     * how to compare the element in this.heapContainer.
+     */
+    this.compareFunction = compareFcuntion;
   }
 
   /**
