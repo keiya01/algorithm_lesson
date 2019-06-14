@@ -26,13 +26,39 @@ export class Heap<T> {
     return Math.floor((index - 1) / 2);
   }
 
+  getLeftChildIndex(parentIndex: number) {
+    return (2 * parentIndex) + 1;
+  }
+  
+  getRightChildIndex(parentIndex: number) {
+    return (2 * parentIndex) + 2;
+  }
+
   hasParent(index: number) {
     return this.getParentIndex(index) >= 0;
+  }
+
+  hasLeftChild(parentIndex: number) {
+    return this.getLeftChildIndex(parentIndex) < this.heapContainer.length;
+  }
+
+  hasRightChild(parentIndex: number) {
+    return this.getRightChildIndex(parentIndex) < this.heapContainer.length;
   }
 
   parent(index: number): T {
     const parentIndex = this.getParentIndex(index);
     return this.heapContainer[parentIndex];
+  }
+
+  rightChild(parentIndex: number) {
+    const childIndex = this.getRightChildIndex(parentIndex);
+    return this.heapContainer[childIndex];
+  }
+
+  leftChild(parentIndex: number) {
+    const childIndex = this.getLeftChildIndex(parentIndex);
+    return this.heapContainer[childIndex]
   }
 
   /**
