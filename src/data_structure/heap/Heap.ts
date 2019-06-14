@@ -1,4 +1,4 @@
-type CompareFunction<T> = (parentElement: T, childElement: T) => void;
+type CompareFunction<T> = (parentElement: T, childElement: T) => boolean;
 
 export class Heap<T> {
   public heapContainer: T[];
@@ -51,7 +51,7 @@ export class Heap<T> {
 
     while(
       this.hasParent(currentIndex)
-      && this.pairIsInCorrectOrder(this.parent(currentIndex), this.heapContainer[currentIndex])
+      && !this.pairIsInCorrectOrder(this.parent(currentIndex), this.heapContainer[currentIndex])
     ) {
       const parentIndex = this.getParentIndex(currentIndex);
       this._swap(parentIndex, currentIndex);
@@ -70,7 +70,7 @@ export class Heap<T> {
    * This function is redefined and gets overwritten in other class
    * see https://github.com/trekhleb/javascript-algorithms/issues/236
    */
-  pairIsInCorrectOrder(parentElement: T, childElement: T) {
+  pairIsInCorrectOrder(parentElement: T, childElement: T): boolean {
     throw new Error(`You have to implement heap pair comparision method for ${parentElement} and ${childElement} values.`);
   }
 }
